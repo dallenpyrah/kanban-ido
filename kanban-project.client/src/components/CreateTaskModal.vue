@@ -80,7 +80,7 @@ export default {
           await tasksService.createTask(state.newTask)
           await listsService.getTasksByListId(props.listData.id)
           state.newTask = { task: '', list: props.listData.id }
-          $('#create-task').modal('hide')
+          $('#create-task' + props.listData._id).modal('hide')
         } catch (error) {
           console.error(error)
         }

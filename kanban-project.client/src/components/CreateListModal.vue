@@ -1,8 +1,8 @@
 <template>
-  <div class="create-comment-modal">
+  <div class="create-list-modal">
     <div
       class="modal fade"
-      :id="`create-comment` + taskData._id"
+      :id="`create-list` + state.board._id"
       tabindex="-1"
       role="dialog"
       aria-labelledby="modelTitleId"
@@ -11,8 +11,8 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title text-dark">
-              Add your comment
+            <h5 class="modal-title">
+              Create Your List
             </h5>
             <button
               type="button"
@@ -24,16 +24,16 @@
             </button>
           </div>
           <div class="modal-body">
-            <form class="form-inline" @submit.prevent="createComment">
+            <form class="form-inline" @submit.prevent="createList">
               <div class="form-group">
                 <input
                   type="text"
-                  name="comment"
-                  id="comment"
+                  name="task"
+                  id="task"
                   class="form-control"
-                  placeholder="Enter Comment"
+                  placeholder="Enter List"
                   aria-describedby="helpId"
-                  v-model="state.newComment.comment"
+                  v-model="state.newList.list"
                 />
               </div>
             </form>
@@ -46,7 +46,7 @@
             >
               Close
             </button>
-            <button class="btn btn-success" @click="createComment">
+            <button class="btn btn-success" @click="createList">
               Create
             </button>
           </div>
@@ -60,27 +60,23 @@
 import { computed, reactive } from 'vue'
 import { AppState } from '../AppState'
 import $ from 'jquery'
-import { commentsService } from '../services/CommentsService'
-import { tasksService } from '../services/TasksService'
+import { listsService } from '../services/ListsService'
 export default {
-  name: 'CreateCommentModal',
-  props: {
-    taskData: { type: Object, required: true }
-  },
-  setup(props) {
+  name: 'CreateListModal',
+  setup() {
     const state = reactive({
       user: computed(() => AppState.user),
-      activeComment: computed(() => AppState.activeComment),
-      newComment: { comment: '', task: props.taskData.id }
+      activeList: computed(() => AppState.activeList),
+      board: computed(() => AppState.activeBoard),
+      newList: {}
     })
     return {
       state,
-      async createComment() {
+      async createList() {
         try {
-          await commentsService.createComment(state.newComment)
-          await tasksService.getCommentsByTaskId(props.taskData.id)
-          state.newComment = { comment: '', task: props.taskData.id }
-          $('#create-comment' + props.taskData._id).modal('hide')
+          const list = { list: state.newList.list, board: state.board.id }
+          await listsService.createList(list)
+          $('#create-list' + state.board._id).modal('hide')
         } catch (error) {
           console.error(error)
         }

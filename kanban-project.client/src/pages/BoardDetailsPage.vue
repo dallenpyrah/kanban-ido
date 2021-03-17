@@ -5,6 +5,8 @@
       <button type="sumbit" class="btn btn-success">
         Create
       </button>
+      <i class="fa fa-plus-square text-success" :data-target="`#create-list` + state.board._id" data-toggle="modal" aria-hidden="true"></i>
+      <CreateListModal />
     </form>
     <div class="card">
       <h1>{{ state.board.title }}</h1>
