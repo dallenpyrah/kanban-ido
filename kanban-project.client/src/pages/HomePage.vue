@@ -1,0 +1,75 @@
+<template>
+  <div class="container-fluid">
+    <div class="row height align-items-center justify-content-center">
+      <div class="text-center col-6">
+        <button
+          class="btn btn-outline-primary text-uppercase text-light"
+          @click="login"
+          v-if="!user.isAuthenticated"
+        >
+          iDO <br> Login
+        </button>
+        <button v-else @click="goToBoards" class="btn btn-dark">
+          Go to Boards
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import { AuthService } from '../services/AuthService'
+import { AppState } from '../AppState'
+import { computed, reactive } from 'vue'
+import { useRouter } from 'vue-router'
+
+export default {
+  name: 'Home',
+  setup() {
+    const router = useRouter()
+    const state = reactive({
+      dropOpen: false
+    })
+    return {
+      state,
+      user: computed(() => AppState.user),
+      async login() {
+        await
+        AuthService.loginWithPopup()
+        router.push({ name: 'BoardsPage' })
+      },
+      async logout() {
+        await AuthService.logout({ returnTo: window.location.origin })
+      },
+      async goToBoards() {
+        router.push({ name: 'BoardsPage' })
+      }
+    }
+  }
+}
+</script>
+
+<style scoped lang="scss">
+.home{
+  text-align: center;
+  user-select: none;
+  > img{
+    height: 200px;
+    width: 200px;
+  }
+}
+.height{
+  height: 80vh;
+}
+button{
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(rgb(255, 112, 112), rgb(192, 165, 255), rgb(255, 149, 250) )
+}
+button:hover{
+  box-shadow: 1px 3px 5px rgb(94, 94, 94);
+  cursor: pointer
+}
+</style>
