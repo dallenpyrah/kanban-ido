@@ -1,7 +1,7 @@
 <template>
   <div v-if="state.user.isAuthenticated" class="col-2 mt-4">
     <div class="card bg-dark text-light">
-      <h3><span class="text-danger" @click="deleteList"> &#9747; </span>List: {{ list.list }} <i class="fa fa-plus-square text-success" :data-target="`#create-task` + list._id" data-toggle="modal" aria-hidden="true"></i></h3>
+      <h3><i v-if="state.user.email == list.creatorId.email" class="fa fa-times-circle" @click="deleteList" aria-hidden="true"></i>List: {{ list.list }} <i class="fa fa-plus-square text-success" :data-target="`#create-task` + list._id" data-toggle="modal" aria-hidden="true"></i></h3>
       <Task v-for="task in state.task" :key="task.id" :task="task" />
     </div>
   </div>

@@ -16,7 +16,7 @@
         </div>
       </div>
     </router-link>
-    <div v-if="state.board.creator && state.user.email == state.board.creator.email">
+    <div v-if="state.user.email == board.creatorId.email">
       <i class="fa fa-trash text-danger" @click="deleteBoard" aria-hidden="true"></i>
     </div>
   </div>

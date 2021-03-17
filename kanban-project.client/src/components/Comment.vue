@@ -1,7 +1,7 @@
 <template>
   <div class="col-10">
     <div class="card bg-primary m-2">
-      <h6>Comment:{{ comment.comment }} {{ comment.creatorId.email }}<i class="fa fa-times text-danger" @click="deleteComment" aria-hidden="true"></i></h6>
+      <h6>Comment:{{ comment.comment }} {{ comment.creatorId.email }}<i v-if="state.user.email == comment.creatorId.email" class="fa fa-times text-danger" @click="deleteComment" aria-hidden="true"></i></h6>
     </div>
   </div>
 </template>
@@ -18,6 +18,7 @@ export default {
   },
   setup(props) {
     const state = reactive({
+      user: computed(() => AppState.user),
       comment: computed(() => AppState.comments)
     })
     return {
