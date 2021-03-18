@@ -7,17 +7,17 @@
     </button>
   </form> -->
   <div class="col-4 text-center m-4">
-    <router-link :to="{name:'BoardDetailsPage', params: {id: board.id}}">
-      <div class="card bg-dark">
-        <div class="card-title">
-          <h1 class="text-purple">
+    <div class="card p-1 rounded bg-dark">
+      <div class="card-title">
+        <div v-if="state.user.email == board.creatorId.email">
+          <i class="fa fa-trash text-danger m-3 fa-lg" @click="deleteBoard" aria-hidden="true"></i>
+        </div>
+        <router-link :to="{name:'BoardDetailsPage', params: {id: board.id}}">
+          <h1 class="text-light">
             {{ board.title }}
           </h1>
-        </div>
+        </router-link>
       </div>
-    </router-link>
-    <div v-if="state.user.email == board.creatorId.email">
-      <i class="fa fa-trash text-danger fa-lg" @click="deleteBoard" aria-hidden="true"></i>
     </div>
   </div>
 </template>
@@ -62,7 +62,7 @@ export default {
 </script>
 
 <style>
-.card{
-  opacity: .85;
+.rounded{
+  border-radius: 50rem!important;
 }
 </style>

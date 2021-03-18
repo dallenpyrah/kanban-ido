@@ -1,17 +1,19 @@
 <template>
   <div v-if="state.user.isAuthenticated" class="col-12">
-  <CreateCommentModal :task-data="task" />
     <div class="card text-dark m-2">
       <h6>
-        {{ task.task }}
+        Task: {{ task.task }}
         <i v-if="state.user.email == task.creatorId.email" class="fa fa-times text-danger p-1" @click="deleteTask" aria-hidden="true"></i>
         <br>
       </h6>
-      <Comment v-for="comment in state.comment" :key="comment.id" :comment="comment" />
       <button class="btn" :data-target="`#create-comment` + task._id" data-toggle="modal" aria-hidden="true">
-        <i class="fa fa-plus-square text-dark" aria-hidden="true"></i>
+        <i class="fa fa-plus-square" aria-hidden="true"></i>
       </button>
     </div>
+      <Comment v-for="comment in state.comment" :key="comment.id" :comment="comment" />
+  </div>
+  <div>
+  <CreateCommentModal :task-data="task" />
   </div>
 </template>
 

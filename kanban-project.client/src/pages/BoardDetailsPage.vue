@@ -1,16 +1,18 @@
 <template>
-  <div class="col-12 text-center mt-3">
-    <CreateListModal />
-    <div class="card">
-      <h1>
-        <button type="sumbit" class="btn btn-dark m-3" :data-target="`#create-list` + state.board._id" data-toggle="modal" aria-hidden="true">
-          Create List
-        </button>
-        {{ state.board.title }}
-      </h1>
-    </div>
-    <div class="row">
-      <List v-for="list in state.list" :key="list.id" :list="list" />
+  <div class="container-fluid">
+    <div class="col-12 text-center mt-3">
+      <CreateListModal />
+      <div class="card">
+        <h1>
+          <button type="sumbit" class="btn btn-dark m-3" :data-target="`#create-list` + state.board._id" data-toggle="modal" aria-hidden="true">
+            Create List
+          </button>
+          {{ state.board.title }}
+        </h1>
+      </div>
+      <div class="row">
+        <List v-for="list in state.list" :key="list.id" :list="list" />
+      </div>
     </div>
   </div>
 </template>
@@ -61,5 +63,4 @@ export default {
 </script>
 
 <style>
-
 </style>

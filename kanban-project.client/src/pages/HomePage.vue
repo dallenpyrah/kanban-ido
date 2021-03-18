@@ -7,7 +7,7 @@
           @click="login"
           v-if="!user.isAuthenticated"
         >
-          iDO <br> Login
+          Login to <br> Synoptic
         </button>
         <button v-else @click="goToBoards" class="btn btn-dark text-size">
           Go to Boards

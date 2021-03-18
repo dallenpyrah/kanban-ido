@@ -1,16 +1,18 @@
 <template>
   <div v-if="state.user.isAuthenticated" class="col-2 mt-4">
     <div class="card">
-       <h3>
-        <i v-if="state.user.email == list.creatorId.email" class="fa fa-times text-danger" @click="deleteList" aria-hidden="true"></i>
+      <h3>
+        <div v-if="state.user.email == list.creatorId.email">
+          <i class="fa fa-times text-danger" @click="deleteList" aria-hidden="true"></i>
+        </div>
         {{ list.list }}
       </h3>
     </div>
     <div class="card bg-dark text-light">
       <Task v-for="task in state.task" :key="task.id" :task="task" :list="list" />
-        <button class="btn" :data-target="`#create-task` + list._id" data-toggle="modal" aria-hidden="true">
-          <i class="fa fa-plus-square fa-lg text-light" aria-hidden="true"> </i>
-        </button>
+      <button class="btn" :data-target="`#create-task` + list._id" data-toggle="modal" aria-hidden="true">
+        <i class="fa fa-plus-square fa-lg text-light" aria-hidden="true"> </i>
+      </button>
     </div>
   </div>
   <CreateTaskModal :list-data="list" />
@@ -53,7 +55,4 @@ export default {
 </script>
 
 <style>
-.card{
-  backdrop-filter: blur(20px);
-}
 </style>

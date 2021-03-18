@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <i class="icon fa fa-trello fa-2x" aria-hidden="true"></i>
+        <img src="../assets/img/neron2.png" width="40" alt="">
       </div>
     </router-link>
     <button
@@ -24,7 +24,7 @@
           </router-link>
         </li> -->
         <li class="nav-item text-purple">
-          <router-link :to="{ name: 'BoardsPage' }" class="nav-link text-purple">
+          <router-link :to="{ name: 'BoardsPage' }" class="nav-link text-light">
             Boards
           </router-link>
         </li>
@@ -124,14 +124,6 @@ a:hover {
 }
 .nav-item .nav-link.router-link-exact-active{
   color: var(--primary);
-}
-
-.icon{
-
-}
-
-.text-purple{
-color:#ba147d
 }
 
 </style>
