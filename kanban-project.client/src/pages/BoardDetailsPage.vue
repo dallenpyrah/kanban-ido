@@ -1,13 +1,9 @@
 <template>
   <div class="col-12 text-center">
-    <form @submit.prevent="createList" class="form-group">
-      <input type="text" placeholder="Create List" v-model="state.newList.list">
-      <button type="sumbit" class="btn btn-success">
-        Create
-      </button>
-      <i class="fa fa-plus-square text-success" :data-target="`#create-list` + state.board._id" data-toggle="modal" aria-hidden="true"></i>
-      <CreateListModal />
-    </form>
+    <button type="sumbit" class="btn btn-dark m-3" :data-target="`#create-list` + state.board._id" data-toggle="modal" aria-hidden="true">
+      Create List
+    </button>
+    <CreateListModal />
     <div class="card">
       <h1>{{ state.board.title }}</h1>
     </div>
@@ -20,7 +16,7 @@
 <script>
 import { computed, onMounted, reactive } from 'vue'
 import { boardsService } from '../services/BoardsService'
-import { useRoute } from 'vue-router'
+import { onBeforeRouteLeave, useRoute } from 'vue-router'
 import List from '../components/List'
 import { AppState } from '../AppState'
 import { listsService } from '../services/ListsService'
@@ -33,6 +29,13 @@ export default {
       board: computed(() => AppState.activeBoard),
       list: computed(() => AppState.lists),
       newList: {}
+    })
+    onBeforeRouteLeave((to, from, next) => {
+      AppState.activeBoard = {}
+      AppState.lists = {}
+      AppState.tasks = {}
+      AppState.comments = {}
+      next()
     })
     onMounted(async() => await boardsService.getBoardsById(route.params.id))
     onMounted(async() => await boardsService.getListsByBoardId(route.params.id))

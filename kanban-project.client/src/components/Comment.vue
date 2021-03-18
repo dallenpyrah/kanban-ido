@@ -1,7 +1,7 @@
 <template>
-  <div class="col-10">
-    <div class="card bg-primary m-2">
-      <h6>Comment:{{ comment.comment }} {{ comment.creatorId.email }}<i v-if="state.user.email == comment.creatorId.email" class="fa fa-times text-danger" @click="deleteComment" aria-hidden="true"></i></h6>
+  <div class="col-12">
+    <div class="card bg-dark text-light p-2 m-2">
+      <h6>Comment:{{ comment.comment }} {{ comment.creatorId.email }}<i v-if="state.user.email == comment.creatorId.email" class="fa fa-times text-danger p-1" @click="deleteComment" aria-hidden="true"></i></h6>
     </div>
   </div>
 </template>

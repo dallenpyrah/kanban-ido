@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <i class="fa fa-trello fa-2x" aria-hidden="true"></i>
+        <i class="icon fa fa-trello fa-2x" aria-hidden="true"></i>
       </div>
     </router-link>
     <button
@@ -125,4 +125,9 @@ a:hover {
 .nav-item .nav-link.router-link-exact-active{
   color: var(--primary);
 }
+
+.icon{
+
+}
+
 </style>
