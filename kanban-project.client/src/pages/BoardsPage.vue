@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <div class="row justify-content-center">
+    <div class="row height justify-content-center">
       <div class="col-12">
         <button type="sumbit" class="btn m-2 p-2" :data-target="`#create-board` + state.board._id" data-toggle="modal" aria-hidden="true">
           <div><h5 class="text-light"><i class="mr-2 text-purple fa fa-plus-square" aria-hidden="true"> </i>Create Board</h5>
@@ -61,5 +61,7 @@ export default {
 .font{
   font-family: 'Russo One', sans-serif;
 }
-
+.height{
+  height: 81vh;
+}
 </style>

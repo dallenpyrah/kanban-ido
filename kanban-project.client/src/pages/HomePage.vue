@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid height">
     <div class="row height align-items-center justify-content-center">
       <div class="text-center col-6">
         <button
@@ -66,6 +66,7 @@ button{
   width: 200px;
   height: 200px;
   border-radius: 50%;
+  border-color:transparent;
   background: linear-gradient(rgb(228, 64, 64), rgb(51, 18, 58), rgb(194, 76, 188) )
 }
 button:hover{

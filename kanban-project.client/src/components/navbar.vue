@@ -18,14 +18,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
-        <!-- <li class="nav-item">
+        <li class="nav-item">
           <router-link :to="{ name: 'Home' }" class="nav-link">
             Home
           </router-link>
-        </li> -->
+        </li>
         <li class="nav-item text-purple">
-          <router-link :to="{ name: 'BoardsPage' }" class="nav-link text-light">
-            Boards
+          <router-link :to="{ name: 'BoardsPage' }" class="nav-link">
+            Boards Page
           </router-link>
         </li>
       </ul>
@@ -123,7 +123,7 @@ a:hover {
   text-transform: uppercase;
 }
 .nav-item .nav-link.router-link-exact-active{
-  color: var(--primary);
+  color: var(--danger);
 }
 
 </style>
