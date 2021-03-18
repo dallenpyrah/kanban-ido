@@ -45,7 +45,8 @@ export class BoardsController extends BaseController {
     try {
       // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
       req.body.creatorId = req.userInfo.id
-      res.send(await boardsService.create(req.body))
+      const board = await boardsService.create(req.body)
+      res.send(await boardsService.findById(board._id))
     } catch (error) {
       next(error)
     }

@@ -10,7 +10,7 @@
           {{ state.board.title }}
         </h1>
       </div>
-      <div class="row">
+      <div class="row no-wrap">
         <List v-for="list in state.list" :key="list.id" :list="list" />
       </div>
     </div>
@@ -63,4 +63,7 @@ export default {
 </script>
 
 <style>
+.no-wrap{
+  height: 81vh;
+}
 </style>

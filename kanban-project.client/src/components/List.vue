@@ -2,10 +2,10 @@
   <div v-if="state.user.isAuthenticated" class="col-2 mt-4">
     <div class="card">
       <h3>
-        <div v-if="state.user.email == list.creatorId.email">
-          <i class="fa fa-times text-danger" @click="deleteList" aria-hidden="true"></i>
+        <div>
+          <i v-if="state.user.email == list.creatorId.email" class="fa fa-times text-danger" @click="deleteList" aria-hidden="true"></i>
+          {{ list.list }}
         </div>
-        {{ list.list }}
       </h3>
     </div>
     <div class="card bg-dark text-light">

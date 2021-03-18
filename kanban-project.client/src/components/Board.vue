@@ -7,16 +7,14 @@
     </button>
   </form> -->
   <div class="col-4 text-center m-4">
-    <div class="card p-1 rounded bg-dark">
+    <div class="card p-3 rounded bg-dark">
       <div class="card-title">
-        <div v-if="state.user.email == board.creatorId.email">
-          <i class="fa fa-trash text-danger m-3 fa-lg" @click="deleteBoard" aria-hidden="true"></i>
-        </div>
-        <router-link :to="{name:'BoardDetailsPage', params: {id: board.id}}">
-          <h1 class="text-light">
-            {{ board.title }}
-          </h1>
-        </router-link>
+        <h1 class="text-light mt-2">
+          <i v-if="state.user.email == board.creatorId.email" class="fa fa-trash text-danger m-3" @click="deleteBoard" aria-hidden="true"></i>
+          <router-link :to="{name:'BoardDetailsPage', params: {id: board.id}}">
+            <span class="text-light"> {{ board.title }} </span>
+          </router-link>
+        </h1>
       </div>
     </div>
   </div>

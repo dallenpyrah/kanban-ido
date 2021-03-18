@@ -47,7 +47,7 @@
               Close
             </button>
             <button class="btn" @click="createBoard">
-              <i class="fa fa-plus-square fa-2x text-success" aria-hidden="true"> Create</i>
+              <i class="fa fa-plus-square fa-2x text-success" aria-hidden="true"></i>
             </button>
           </div>
         </div>
