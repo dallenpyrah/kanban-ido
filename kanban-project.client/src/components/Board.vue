@@ -8,9 +8,9 @@
   </form> -->
   <div class="col-4 text-center m-4">
     <router-link :to="{name:'BoardDetailsPage', params: {id: board.id}}">
-      <div class="card">
+      <div class="card bg-dark">
         <div class="card-title">
-          <h1 class="text-dark">
+          <h1 class="text-purple">
             {{ board.title }}
           </h1>
         </div>
@@ -62,5 +62,7 @@ export default {
 </script>
 
 <style>
-
+.card{
+  opacity: .85;
+}
 </style>

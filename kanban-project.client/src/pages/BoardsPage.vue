@@ -3,7 +3,8 @@
     <div class="row justify-content-center">
       <div class="col-12">
         <button type="sumbit" class="btn m-2 p-2" :data-target="`#create-board` + state.board._id" data-toggle="modal" aria-hidden="true">
-          <i class="fa fa-plus-square fa-2x text-dark" aria-hidden="true"> Create Board</i>
+          <div><h5 class="text-purple font"><i class="mr-2 text-purple fa fa-plus-square" aria-hidden="true"> </i>Create Board</h5>
+          </div>
         </button>
         <CreateBoardModal />
       </div>
@@ -57,5 +58,13 @@ export default {
 </script>
 
 <style>
+
+.text-purple{
+color:#ba147d
+}
+
+.font{
+  font-family: 'Russo One', sans-serif;
+}
 
 </style>

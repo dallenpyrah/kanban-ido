@@ -23,8 +23,8 @@
             Home
           </router-link>
         </li> -->
-        <li class="nav-item">
-          <router-link :to="{ name: 'BoardsPage' }" class="nav-link">
+        <li class="nav-item text-purple">
+          <router-link :to="{ name: 'BoardsPage' }" class="nav-link text-purple">
             Boards
           </router-link>
         </li>
@@ -128,6 +128,10 @@ a:hover {
 
 .icon{
 
+}
+
+.text-purple{
+color:#ba147d
 }
 
 </style>

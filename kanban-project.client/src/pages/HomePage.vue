@@ -3,13 +3,13 @@
     <div class="row height align-items-center justify-content-center">
       <div class="text-center col-6">
         <button
-          class="btn btn-outline-primary text-uppercase text-light"
+          class="btn btn-outline-primary text-uppercase text-light text-size"
           @click="login"
           v-if="!user.isAuthenticated"
         >
           iDO <br> Login
         </button>
-        <button v-else @click="goToBoards" class="btn btn-dark">
+        <button v-else @click="goToBoards" class="btn btn-dark text-size">
           Go to Boards
         </button>
       </div>
@@ -63,13 +63,17 @@ export default {
 }
 button{
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
-  background: linear-gradient(rgb(255, 112, 112), rgb(192, 165, 255), rgb(255, 149, 250) )
+  background: linear-gradient(rgb(228, 64, 64), rgb(51, 18, 58), rgb(194, 76, 188) )
 }
 button:hover{
   box-shadow: 1px 3px 5px rgb(94, 94, 94);
   cursor: pointer
+}
+
+.text-size{
+  font-size: 25px;
 }
 </style>

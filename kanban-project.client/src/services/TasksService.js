@@ -41,8 +41,7 @@ class TasksService {
 
   async editTask(id, body) {
     try {
-      const res = await api.put('api/tasks/' + id, body)
-      AppState.activeTask = res.data
+      return await api.put('api/tasks/' + id, body)
     } catch (error) {
       console.error(error)
     }
