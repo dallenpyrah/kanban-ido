@@ -6,10 +6,10 @@ export class CommentsController extends BaseController {
   constructor() {
     super('api/comments')
     this.router
+    // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
+      .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
       .get('/:id', this.getCommentsById)
-      // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
-      .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.create)
       .delete('/:id', this.delete)
       .put('/:id', this.edit)

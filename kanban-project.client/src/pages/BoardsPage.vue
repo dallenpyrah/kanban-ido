@@ -27,6 +27,7 @@ export default {
   setup() {
     const router = useRouter()
     const state = reactive({
+      user: computed(() => AppState.user),
       board: computed(() => AppState.boards),
       newBoard: {}
     })
