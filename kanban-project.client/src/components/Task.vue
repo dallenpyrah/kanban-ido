@@ -31,6 +31,8 @@ export default {
     const state = reactive({
       user: computed(() => AppState.user),
       task: computed(() => AppState.activeTask),
+      tasks: computed(() => AppState.tasks),
+      list: computed(() => AppState.lists),
       comment: computed(() => AppState.comments[props.task.id])
     })
     onMounted(async() => await tasksService.getCommentsByTaskId(props.task.id))
