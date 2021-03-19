@@ -39,9 +39,14 @@ class TasksService {
     }
   }
 
-  async editTask(id, body) {
+  async moveTask2(oldListId, newListId, task) {
     try {
-      return await api.put('api/tasks/' + id, body)
+      oldListId = newListId
+      console.log(task.list)
+      task.list = oldListId
+      console.log(task.list)
+      console.log(task)
+      return await api.put('api/tasks/' + task.id, task)
     } catch (error) {
       console.error(error)
     }

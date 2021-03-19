@@ -1,5 +1,5 @@
 <template>
-  <div v-if="state.user.isAuthenticated" class="col-2 mt-4">
+  <div v-if="state.user.isAuthenticated" class="col-2 mt-4 mb-2" dropzone="zone" @dragover.prevent @drop.prevent="moveTask">
     <div class="card">
       <h3>
         <div>
@@ -24,6 +24,7 @@ import { AppState } from '../AppState'
 import { listsService } from '../services/ListsService'
 import Task from '../components/Task'
 import { boardsService } from '../services/BoardsService'
+import { tasksService } from '../services/TasksService'
 export default {
   name: 'List',
   props: {
@@ -36,8 +37,16 @@ export default {
       task: computed(() => AppState.tasks[props.list.id])
     })
     onMounted(async() => await listsService.getTasksByListId(props.list.id))
+    function moveTask() {
+      const task = JSON.parse(event.dataTransfer.getData('task'))
+      const oldListId = JSON.parse(event.dataTransfer.getData('oldList'))
+      const newList = props.list.id
+      console.log('items dropped here', task, props.list.list)
+      tasksService.moveTask2(oldListId, newList, task)
+    }
     return {
       state,
+      moveTask,
       async deleteList() {
         try {
           await listsService.deleteList(props.list.id)

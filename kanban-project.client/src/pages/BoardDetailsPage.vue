@@ -64,6 +64,6 @@ export default {
 
 <style>
 .no-wrap{
-  height: 81vh;
+  height: 78vh;
 }
 </style>
