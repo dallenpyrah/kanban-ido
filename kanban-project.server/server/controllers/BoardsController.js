@@ -35,7 +35,7 @@ export class BoardsController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      return res.send(await boardsService.find())
+      return res.send(await boardsService.find({ creatorId: req.userInfo.id }))
     } catch (error) {
       next(error)
     }

@@ -2,8 +2,9 @@ import { dbContext } from '../db/DbContext'
 import { BadRequest } from '../utils/Errors'
 
 class TasksService {
-  async edit(id, userId, body) {
-    return await dbContext.Task.findOneAndUpdate(id, userId, body).populate('creatorId')
+  async edit(id, creatorId, body) {
+    debugger
+    return await dbContext.Task.findOneAndUpdate({ id, creatorId }, body).populate('creatorId')
   }
 
   async delete(id) {

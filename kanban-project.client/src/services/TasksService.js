@@ -41,12 +41,12 @@ class TasksService {
 
   async moveTask2(oldListId, newListId, task) {
     try {
-      oldListId = newListId
       console.log(task.list)
-      task.list = oldListId
+      task.list = newListId
       console.log(task.list)
       console.log(task)
-      return await api.put('api/tasks/' + task.id, task)
+      const res = await api.put('api/tasks/' + task.id, task.creatorId.id, task)
+      AppState.tasks[task.id] = res.data
     } catch (error) {
       console.error(error)
     }
