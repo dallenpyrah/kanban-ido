@@ -44,6 +44,7 @@ export class BoardsController extends BaseController {
   async create(req, res, next) {
     try {
       // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
+      // below is done to add CREATOR ID
       req.body.creatorId = req.userInfo.id
       const board = await boardsService.create(req.body)
       res.send(await boardsService.findById(board._id))
