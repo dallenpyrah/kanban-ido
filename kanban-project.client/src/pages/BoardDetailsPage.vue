@@ -4,7 +4,13 @@
       <CreateListModal />
       <div class="card">
         <h1>
-          <button type="sumbit" class="btn btn-dark m-3" :data-target="`#create-list` + state.board._id" data-toggle="modal" aria-hidden="true">
+          <button
+            type="sumbit"
+            class="btn btn-dark m-3"
+            :data-target="`#create-list` + state.board._id"
+            data-toggle="modal"
+            aria-hidden="true"
+          >
             Create List
           </button>
           {{ state.board.title }}
@@ -41,8 +47,8 @@ export default {
       AppState.comments = {}
       next()
     })
-    onMounted(async() => await boardsService.getBoardsById(route.params.id))
-    onMounted(async() => await boardsService.getListsByBoardId(route.params.id))
+    onMounted(async () => await boardsService.getBoardsById(route.params.id))
+    onMounted(async () => await boardsService.getListsByBoardId(route.params.id))
     return {
       route,
       state,
@@ -63,7 +69,7 @@ export default {
 </script>
 
 <style>
-.no-wrap{
+.no-wrap {
   height: 78vh;
 }
 </style>

@@ -1,16 +1,37 @@
 <template>
-  <div v-if="state.user.isAuthenticated" class="col-2 mt-4 mb-2" dropzone="zone" @dragover.prevent @drop.prevent="moveTask">
+  <div
+    v-if="state.user.isAuthenticated"
+    class="col-2 mt-4 mb-2"
+    dropzone="zone"
+    @dragover.prevent
+    @drop.prevent="moveTask"
+  >
     <div class="card">
       <h3>
         <div>
-          <i v-if="state.user.email == list.creatorId.email" class="fa fa-times text-danger" @click="deleteList" aria-hidden="true"></i>
+          <i
+            v-if="state.user.email == list.creatorId.email"
+            class="fa fa-times text-danger"
+            @click="deleteList"
+            aria-hidden="true"
+          ></i>
           {{ list.list }}
         </div>
       </h3>
     </div>
     <div class="card bg-dark text-light">
-      <Task v-for="task in state.task" :key="task.id" :task="task" :list="list" />
-      <button class="btn" :data-target="`#create-task` + list._id" data-toggle="modal" aria-hidden="true">
+      <Task
+        v-for="task in state.task"
+        :key="task.id"
+        :task="task"
+        :list="list"
+      />
+      <button
+        class="btn"
+        :data-target="`#create-task` + list._id"
+        data-toggle="modal"
+        aria-hidden="true"
+      >
         <i class="fa fa-plus-square fa-lg text-light" aria-hidden="true"> </i>
       </button>
     </div>
@@ -36,7 +57,7 @@ export default {
       list: computed(() => AppState.lists),
       task: computed(() => AppState.tasks[props.list.id])
     })
-    onMounted(async() => await listsService.getTasksByListId(props.list.id))
+    onMounted(async () => await listsService.getTasksByListId(props.list.id))
     function moveTask() {
       const task = JSON.parse(event.dataTransfer.getData('task'))
       const oldListId = JSON.parse(event.dataTransfer.getData('oldList'))
