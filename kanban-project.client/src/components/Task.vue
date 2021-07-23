@@ -1,16 +1,35 @@
 <template>
-  <div v-if="state.user.isAuthenticated" class="col-12" draggable="true" @dragstart="moveTask">
+  <div
+    v-if="state.user.isAuthenticated"
+    class="col-12"
+    draggable="true"
+    @dragstart="moveTask"
+  >
     <div class="card text-dark m-2">
       <h6>
         Task: {{ task.task }}
-        <i v-if="state.user.email == task.creatorId.email" class="fa fa-times text-danger p-1" @click="deleteTask" aria-hidden="true"></i>
-        <br>
+        <i
+          v-if="state.user.email == task.creatorId.email"
+          class="fa fa-times text-danger p-1"
+          @click="deleteTask"
+          aria-hidden="true"
+        ></i>
+        <br />
       </h6>
-      <button class="btn" :data-target="`#create-comment` + task._id" data-toggle="modal" aria-hidden="true">
+      <button
+        class="btn"
+        :data-target="`#create-comment` + task._id"
+        data-toggle="modal"
+        aria-hidden="true"
+      >
         <i class="fa fa-plus-square" aria-hidden="true"></i>
       </button>
     </div>
-    <Comment v-for="comment in state.comment" :key="comment.id" :comment="comment" />
+    <Comment
+      v-for="comment in state.comment"
+      :key="comment.id"
+      :comment="comment"
+    />
   </div>
   <div>
     <CreateCommentModal :task-data="task" />
@@ -42,7 +61,7 @@ export default {
       event.dataTransfer.setData('task', JSON.stringify(props.task))
       event.dataTransfer.setData('oldList', JSON.stringify(props.list.id))
     }
-    onMounted(async() => await tasksService.getCommentsByTaskId(props.task.id))
+    onMounted(async () => await tasksService.getCommentsByTaskId(props.task.id))
     return {
       state,
       moveTask,
@@ -64,5 +83,4 @@ export default {
 </script>
 
 <style>
-
 </style>
